@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {StyleSheet, View, Button} from 'react-native'
+import {StyleSheet, View, Button,Dimensions} from 'react-native'
 import {THEME} from "../theme";
 import {AppCard} from "../components/UI/AppCard";
 import {EditModal} from "../components/EditModal";
@@ -57,7 +57,7 @@ export const TodoScreen = ({ goBack, todo, removeTodo, editTodo }) => {
 
 const styles = StyleSheet.create({
     button: {
-        width:'40%',
+        width: Dimensions.get('window').width * 0.4,
         color:'#fff34a'
     },
     buttons: {

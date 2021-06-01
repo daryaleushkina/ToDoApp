@@ -21,7 +21,7 @@ export default function App() {
     const [todos, setTodos] = useState([
         { id: '1', title: 'Выучить React Native' },
         { id: '2', title: 'Выучить Kotlin' },
-        { id: '3', title: 'Провести занятие с Кристиной' },
+        { id: '3', title: 'Провести занятие' },
         { id: '4', title: 'Сделать code-review😎' },
 
     ])
