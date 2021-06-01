@@ -19,7 +19,11 @@ export default function App() {
     const [isReady, setIsReady] = useState(false)
     const [todoId, setTodoId] = useState(null)
     const [todos, setTodos] = useState([
-        { id: '1', title: 'Выучить React Native' }
+        { id: '1', title: 'Выучить React Native' },
+        { id: '2', title: 'Выучить Kotlin' },
+        { id: '3', title: 'Провести занятие с Кристиной' },
+        { id: '4', title: 'Сделать code-review😎' },
+
     ])
 
     if (!isReady) {
