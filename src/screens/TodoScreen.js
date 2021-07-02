@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {StyleSheet, View, Button,Dimensions} from 'react-native'
 import {THEME} from "../theme";
 import {AppCard} from "../components/UI/AppCard";
@@ -6,12 +6,17 @@ import {EditModal} from "../components/EditModal";
 import {AppTextBold} from "../components/UI/AppTextBold";
 import {AppButton} from "../components/UI/AppButton";
 import {AntDesign, FontAwesome} from "@expo/vector-icons";
+import {TodoContext} from "../context/todo/todoContext";
+import {ScreenContext} from "../context/screen/screenContext";
 
-export const TodoScreen = ({ goBack, todo, removeTodo, editTodo }) => {
+export const TodoScreen = () => {
     const [value, setValue] = useState('')
     const [modal, setModal] = useState(false)
+    const {todos, removeTodo, editTodo} = useContext(TodoContext)
+    const {todoId, changeScreen} = useContext(ScreenContext)
 
-    const onSave = (title) => {
+    const todo = todos.find(t => t.id === todoId)
+    const saveHandler = (title) => {
         editTodo(todo.id,title)
         setModal(false)
     }
@@ -20,7 +25,7 @@ export const TodoScreen = ({ goBack, todo, removeTodo, editTodo }) => {
             <EditModal visible={modal}
                        onCancel={()=>setModal(false)}
                        titleTodo={todo.title}
-                       onSave={onSave}
+                       onSave={saveHandler}
             />
             <AppCard style={styles.card}>
                 <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
@@ -33,7 +38,7 @@ export const TodoScreen = ({ goBack, todo, removeTodo, editTodo }) => {
             <View style={styles.buttons}>
                 <View style={styles.button}>
                     <AppButton
-                        onPress={goBack}
+                        onPress={()=> changeScreen(null)}
                         color={THEME.GREY_COLOR}
                     >
                         <AntDesign name={'back'} size={20} color={'#fff'}></AntDesign>
