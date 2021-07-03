@@ -10,7 +10,7 @@ export const MainLayout = () => {
 
     console.log(todoId)
 
-    return (<View>
+    return (<View style={styles.wrapper}>
         <Navbar title='Todo App!' />
         <View style={styles.container}>
             {
@@ -23,6 +23,10 @@ export const MainLayout = () => {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 30,
-        paddingVertical: 20
+        paddingVertical: 20,
+        flex: 1
+    },
+    wrapper: {
+        flex: 1
     }
 })
